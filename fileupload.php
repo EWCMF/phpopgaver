@@ -17,6 +17,7 @@
         </form>
 
         <?php
+        //WS3schools eksemplet er brugt uden store ændringer men alt er wrappede i en isset således at fejl ikke vises ved første indgang.
         if (isset($_FILES['fileToUpload'])) {
 
         $target_dir = "uploads/";
@@ -72,12 +73,14 @@
         <div class="margin">
           <p>Uploadede filer vil blive listede her</p>
             <?php
+              // Her sker visningen af filerne. Et a tag bliver brugt så billede kan vises i fuld via browseren.
               $dir = "uploads/";
 
-              // Open a directory, and read its contents
+              // Mappen uploads bliver læst
               if (is_dir($dir)) {
                   if ($dh = opendir($dir)) {
                       while (($file = readdir($dh)) !== false) {
+                          // Check at vi har med en oprigtig fil at gøre og ikke stigerne . og ..
                           if (is_file($dir . $file)) {
                               echo "$file <a href='/phpopgaver/uploads/$file'>Link</a></br>";
                           }

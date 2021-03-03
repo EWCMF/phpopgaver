@@ -8,6 +8,8 @@ session_start();
 <?php
 
 
+// Det tidligere navn der blev brugt i GET requesten bliver vist her hvis der er et.
+// $_SESSION bruges til at gemme det tidligere navn.
 if (!isset($_SESSION["fornavn"])) {
     echo "Intet navn i session";
 } else {
@@ -17,6 +19,7 @@ if (!isset($_SESSION["fornavn"])) {
 
 echo "<br><br>";
 
+//Både fornavn og efter skal være angivet som queries i URL'en for at navnet bliver vist.
 if (!isset($_GET['fornavn']) || !isset($_GET['efternavn'])) {
     echo "Intet navn i GET";
 } else {

@@ -3,6 +3,7 @@
     <link rel="stylesheet" type="text/css" href="beregner.css">
 </head>
 <body>
+    <!-- Formen der skal udfyldes, php bruges til at bevare værdier du indtastede. -->
     <p>Udfyld alle felter og beregn din DPS (Damage per second)</p>
     <form method="POST" action="/phpopgaver/beregner.php">
         <div class="flex col">
@@ -40,8 +41,10 @@
 </html>
 
 <?php
+    // En simpel beregner af DPS med parameter som tit ses i spil.
     $required = array("minDamage", "maxDamage", "atkSpeed", "hitChance", "critChance");
 
+    // error og formSubmitted bruges til at validere at vi har nok data til at lave beregningerne.
     $error = false;
     $formSubmitted = false;
     foreach($required as $field) {
@@ -57,12 +60,16 @@
     } else if ($error) {
         echo "Fejl: Alle felter skal udfyldes";
     } else {
+        // Formen sættes ind i variabler.
         $minDamage = $_POST["minDamage"];
         $maxDamage = $_POST["maxDamage"];
         $atkSpeed = $_POST["atkSpeed"];
         $hitChance = $_POST["hitChance"];
         $critChance = $_POST["critChance"];
 
+        // lol $hitChance. php virker godt med ordet hit. Men ellers sker udregninger her.
+        // Disse resultater er dog kun i det ideele tilfælde og der kan være forskel på om man slår 10 gange eller 100 gange,
+        // da vi har med sansynlighed at gøre.
         $hitChanceMultiplier = $hitChance / 100;
         $base = (($minDamage + $maxDamage) / 2) * $atkSpeed * $hitChanceMultiplier;
         $critPercent = $critChance / 100;
