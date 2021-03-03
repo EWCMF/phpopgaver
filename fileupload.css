@@ -1,0 +1,24 @@
+.flex {
+    display: flex;
+}
+
+.col {
+    flex-direction: column;
+    flex-grow: initial;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+label {
+    margin-bottom: 0.5rem;
+}
+
+.margin {
+    margin-top: 2rem;
+}
